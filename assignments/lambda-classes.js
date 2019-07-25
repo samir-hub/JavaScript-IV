@@ -25,6 +25,10 @@ class Person {
     grade(student, subject){
         console.log(`${student.name} receives a perfect score on ${subject}`);
       }
+    modifyGrade(student){
+      student.grade = (student.grade - (Math.random())*50);
+      console.log(`${student.name}'s grade is now ${student.grade}!`);
+    }  
   }//Instructor
   
   class Student extends Person{
@@ -33,6 +37,7 @@ class Person {
       this.previousBackground = studentAttributes.previousBackground; 
       this.className = studentAttributes.className; 
       this.favSubjects = studentAttributes.favSubjects;
+      this.grade = 100;
     }
     //write methods here!
     listsSubjects(){
@@ -45,6 +50,14 @@ class Person {
 
     sprintChallenge(subject){
         console.log(`${this.name} has begun sprint challenge on ${subject}.`);
+    }
+
+    graduate(){
+      if (this.grade >= 70){
+        console.log(`${this.name} may now graduate!`);
+      } else {
+        console.log(`${this.name} may not graduate!`);
+      }
     }
   }//Student
 
@@ -180,3 +193,8 @@ nazar.standUp('Awesome Channel');
 lily.standUp('Great Channel');
 nazar.debugsCode(samir, 'Java');
 lily.debugsCode(hanz, "HTML");
+
+
+nazar.modifyGrade(samir);
+
+samir.graduate();
